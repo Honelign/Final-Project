@@ -175,6 +175,20 @@ functions:
     iamRoleStatements:
       - Effect: Allow
         Action:
+          - dynamodb:GetItem
+          - dynamodb:UpdateItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
+      #- Effect: Allow
+       # Action:
+       #   - s3:PutObject
+       # Resource: "arn:aws:s3:::${self:provider.environment.ATTACHMENT_S3_BUCKET}/*"
+      #- Effect: Allow
+       # Action:
+        #  - xray:PutTraceSegments
+       # Resource: "*"
+
+      - Effect: Allow
+        Action:
           - s3:*
           - xray:PutTraceSegments
         Resource: arn:aws:s3:::${self:provider.environment.S3_BUCKET_NAME}/*
